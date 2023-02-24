@@ -1,0 +1,14 @@
+﻿<Window x:Class="NovikovDrugstorV2.ResultsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NovikovDrugstorV2"
+        mc:Ignorable="d"
+        Title="ResultsWindow" Height="316" Width="284">
+    <Grid>
+        <DataGrid Name="DrugGrid" AutoGenerateColumns="False">
+        </DataGrid>
+        <Label x:Name="lbQuantity" Content="Общее количество: " Margin="0,150,0,0" FontSize="15" Visibility="Hidden"/>
+    </Grid>
+</Window>
