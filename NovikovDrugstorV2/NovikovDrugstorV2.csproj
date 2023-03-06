@@ -223,8 +223,26 @@
     <Compile Include="TableWindows\ClassesTable.xaml.cs">
       <DependentUpon>ClassesTable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TableWindows\ComponentsDialog.xaml.cs">
+      <DependentUpon>ComponentsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TableWindows\DrugDialog.xaml.cs">
+      <DependentUpon>DrugDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TableWindows\HospitalSelectionDialog.xaml.cs">
       <DependentUpon>HospitalSelectionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TableWindows\RecipeDialog.xaml.cs">
+      <DependentUpon>RecipeDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TableWindows\ReleaseDialog.xaml.cs">
+      <DependentUpon>ReleaseDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TableWindows\StorageDialog.xaml.cs">
+      <DependentUpon>StorageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TableWindows\TechnicalManualDialog.xaml.cs">
+      <DependentUpon>TechnicalManualDialog.xaml</DependentUpon>
     </Compile>
     <Page Include="AboutPage.xaml">
       <SubType>Designer</SubType>
@@ -262,7 +280,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="TableWindows\ComponentsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TableWindows\DrugDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TableWindows\HospitalSelectionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TableWindows\RecipeDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TableWindows\ReleaseDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TableWindows\StorageDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TableWindows\TechnicalManualDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

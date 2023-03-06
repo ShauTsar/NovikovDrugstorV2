@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Azure.Core;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
@@ -20,12 +22,13 @@ namespace NovikovDrugstorV2
 
     public partial class ReportPage : Window
     {
-        public List<Drug> drugs = new List<Drug>();
+        public DrugsWindow drugsWindow;
         private SqlConnection _connection;
+        public ResultsWindow resultsWindow;
         public ReportPage()
         {
             InitializeComponent();
-            _connection = new SqlConnection(@"Data Source=ES371\MSSQLSERVER01;Initial Catalog=NovikovDrugstore;Integrated Security=True");
+            _connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString);
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -37,112 +40,77 @@ namespace NovikovDrugstorV2
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            drugs.Clear();      
             switch (ReportsCBX.SelectedIndex)
             {
                 case 0:
-                    using (_connection) 
-                    {
-                        _connection.Open();
-
-                        SqlCommand command = new SqlCommand("GetDrugsForOrdersInProduction", _connection);
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        SqlDataReader reader = command.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            Drug drug = new Drug();
-                            drug.ID = (int)reader["ID"];
-                            drug.Name = (string)reader["Name"];
-                            drug.Quantity = (int)reader["TotalQuantity"];
-                            drugs.Add(drug);
-                        }
-                        reader.Close();
-
-                        StringBuilder sb = new StringBuilder();
-                        sb.Append("Название Лекарства\tКоличество\n");
-
-                        foreach (var drug in drugs)
-                        {
-                            sb.Append($"{drug.Name}\t{drug.Quantity}\n");
-                        }
-                        int totalQuantity = drugs.Sum(d => d.Quantity);
-                        ResultsWindow resultsWindow = new ResultsWindow(drugs, ReportType.DrugsForOrdersInProduction, totalQuantity) ;
-                        resultsWindow.Show();
-
-
-                    }
+                    ShowResult(ReportType.DrugsForOrdersInProduction);
+                    
                     break;
                 case 1:
-                    DrugsWindow drugsWindow = new DrugsWindow();
-                    string drugType = null;
-                    string drugName = null;
-                    bool allMedicine;
-
-                    if (drugsWindow.ShowDialog() == true)
-                    {
-                        drugType = drugsWindow.MedicineType;
-                        drugName = drugsWindow.MedicineName;
-                        allMedicine = drugsWindow.AllMedicine;
-                        using (SqlCommand command = new SqlCommand("GetTechnicalManualForDrugs", _connection))
-                        {
-                            command.CommandType = CommandType.StoredProcedure;
-                            if (drugType != "" && drugName != "")
-                            {
-                                command.Parameters.AddWithValue("@drug", drugName);
-                                command.Parameters.AddWithValue("@class", drugType);
-                            }
-                            if(allMedicine == true)
-                            {
-                                command.Parameters.AddWithValue("@all", allMedicine);
-                            }
-                            _connection.Open();
-                            SqlDataReader reader = command.ExecuteReader();
-
-                            StringBuilder sb = new StringBuilder();
-                            sb.Append("Drug Name\tDescription\n");
-
-                            while (reader.Read())
-                            {
-                                Drug drug = new Drug();
-                                string name = (string)reader["Лекарство"];
-                                string description = (string)reader["MethodOfPreparation"];
-                                drug.Name = name;
-                                drug.Description = description;
-                                sb.Append($"{name}\t{description}\n");
-                                drugs.Add(drug);
-                            }
-
-                            // Close reader and connection
-                            reader.Close();
-                            _connection.Close();
-
-                            ResultsWindow resultsWindow = new ResultsWindow(drugs, ReportType.GetTechnicalManualForDrugs);
-                            resultsWindow.Show();
-                        }
-                    }
-
+                    ShowResult(ReportType.GetTechnicalManualForDrugs);                               
                     break;
+                case 2:
+                    ShowResult(ReportType.DrugsPrices);
+                        break;
+                case 3:
+                    ShowResult(ReportType.BestDrugs);
+                    break;
+                case 4:
+                    ShowResult(ReportType.PatientsNotRelease);
+                    break;
+                case 5:
+                    ShowResult(ReportType.PatientsWait);
+                    break;
+                case 6:
+                    ShowResult(ReportType.TopDrugs);
+                    break;
+                case 7:
+                    ShowResult(ReportType.ComponentsForDate);
+                    break;
+                case 8:
+                    ShowResult(ReportType.DrugsAndPatients);
+                    break;
+                case 9:
+                ShowResult(ReportType.ZeroDrugs);
+                    break;
+                case 10:
+                ShowResult(ReportType.CriticalDrugs);
+                    break;  
+                case 11:
+                ShowResult(ReportType.AllOrders);
+                    break;
+
+
+
 
 
 
             }
 
         }
+        private void ShowResult(ReportType reportType)
+        {
+            resultsWindow = new ResultsWindow(reportType: reportType, _connection: _connection);
+            resultsWindow.Show();
+        }
     }
     public enum ReportType
     {
         DrugsForOrdersInProduction,
-        GetTechnicalManualForDrugs
+        GetTechnicalManualForDrugs,
+        DrugsPrices,
+        BestDrugs,
+        PatientsNotRelease,
+        PatientsWait,
+        TopDrugs,
+        ZeroDrugs,
+        CriticalDrugs,
+        AllOrders,
+        ComponentsForDate, 
+        DrugsAndPatients
     }
 
 
 
-    public class Drug
-    {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public int Quantity { get; set; }
-        public string Description { get; set; }
-    }
+   
 }

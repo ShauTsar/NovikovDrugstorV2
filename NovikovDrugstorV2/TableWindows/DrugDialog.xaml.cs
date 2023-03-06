@@ -17,21 +17,23 @@ using System.Windows.Shapes;
 
 namespace NovikovDrugstorV2.TableWindows
 {
-
-    public partial class HospitalSelectionDialog : Window
+    /// <summary>
+    /// Interaction logic for DrugDialog.xaml
+    /// </summary>
+    public partial class DrugDialog : Window
     {
-        public int SelectedHospitalId { get; private set; }
-        public string SelectedHospitalName { get; set; }
+        public int SelectedClassId { get; private set; }
+        public string SelectedClassName { get; set; }
 
-        public HospitalSelectionDialog()
+        public DrugDialog()
         {
             InitializeComponent();
-            LoadHospitals();
+            LoadClasses();
         }
 
-        private void LoadHospitals()
+        private void LoadClasses()
         {
-            string query = "SELECT ID, Name FROM dbo.Hospitals ORDER BY Name";
+            string query = "SELECT ID, NameOfClass FROM dbo.Classes ORDER BY NameOfClass";
             DataTable table = new DataTable();
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString))
             using (var command = new SqlCommand(query, connection))
@@ -40,23 +42,22 @@ namespace NovikovDrugstorV2.TableWindows
                 adapter.Fill(table);
             }
 
-            HospitalsList.ItemsSource = table.DefaultView;
-            HospitalsList.DisplayMemberPath = "Name";
-            HospitalsList.SelectedValuePath = "ID"; // Add this line to specify the ValueMemberPath
+            ClassesList.ItemsSource = table.DefaultView;
+            ClassesList.DisplayMemberPath = "NameOfClass";
+            ClassesList.SelectedValuePath = "ID"; // Add this line to specify the ValueMemberPath
         }
-
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
-            DataRowView selectedRow = (DataRowView)HospitalsList.SelectedItem;
+            DataRowView selectedRow = (DataRowView)ClassesList.SelectedItem;
             if (selectedRow != null)
             {
-                SelectedHospitalId = (int)HospitalsList.SelectedValue;
+                SelectedClassId = (int)ClassesList.SelectedValue;
                 DialogResult = true;
                 Close();
             }
             else
             {
-                MessageBox.Show("Please select a hospital.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Please select a class.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -65,8 +66,5 @@ namespace NovikovDrugstorV2.TableWindows
             DialogResult = false;
             Close();
         }
-
     }
-
 }
-

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NovikovDrugstorV2"
         mc:Ignorable="d"
-       Title="Dark Purple WPF App" Height="545" Width="565" Closed="TablesWindow_Closed">
+       Title="Dark Purple WPF App" Height="616" Width="460" Closed="TablesWindow_Closed">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Segoe Print"/>
@@ -43,20 +43,17 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="107*"/>
-            <ColumnDefinition Width="458*"/>
-        </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="dbName" Text="ИС &quot;Аптека &quot;" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Margin="69,0,0,0"/>
-        <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Left" Grid.Column="1" Margin="60,0,0,0">
+        <TextBlock x:Name="dbName" Text="ИС &quot;Аптека &quot;" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,40,0,10" Grid.RowSpan="2">
             <Button Content="Вид лекарства" x:Name="btnTbClasses" Click="btnTbClasses_Click"/>
             <Button Content="Врачи" x:Name="btnTbDoctors" Click="btnTbDoctors_Click"/>
             <Button Content="Лекарства" x:Name="btnTbDrugs" Click="btnTbDrugs_Click"/>
-            <Button Content="Поликлинники" x:Name="btnTbHospitals" Click="btnTbHospitals_Click"/>
+            <Button Content="Поликлиники" x:Name="btnTbHospitals" Click="btnTbHospitals_Click"/>
             <Button Content="Заказы на изготовление" x:Name="btnTbOrdersForIssue" Click="btnTbOrdersForIssue_Click"/>
             <Button Content="Пациенты" x:Name="btnTbPatients" Click="btnTbPatients_Click"/>
             <Button Content="Фармацевты" x:Name="btnTbPharmacists" Click="btnTbPharmacists_Click"/>
@@ -64,6 +61,8 @@
             <Button Content="Выдача" x:Name="btnTbRelease" Click="btnTbRelease_Click"/>
             <Button Content="Склад" x:Name="btnTbStorage" Click="btnTbStorage_Click"/>
             <Button Content="Техническое изготовление" x:Name="btnTbTechnicalManual" Click="btnTbTechnicalManual_Click"/>
+            <Button Content="Компоненты" x:Name="btnTbComponents" Click="btnTbComponents_Click" />
+            <Button Content="Изготовление компонентов" x:Name="btnTbComponentToCreate" Click="btnTbComponentToCreate_Click" />
         </StackPanel>
     </Grid>
 </Window>

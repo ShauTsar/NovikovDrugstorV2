@@ -5,18 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NovikovDrugstorV2"
         mc:Ignorable="d"
-        Title="ReportPage" Height="421" Width="334" Background="#262626" Closed="Window_Closed">
+        Title="ReportPage" Height="542" Width="1233"  Closed="Window_Closed">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Segoe Print"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Foreground" Value="#FF4500"/>
-        </Style>
-        <Style TargetType="ComboBox">
-            <Setter Property="FontFamily" Value="Segoe Print"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Foreground" Value="#FF4500"/>
-            <Setter Property="Background" Value="#262626"/>
         </Style>
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Segoe Print"/>
@@ -44,8 +38,14 @@
             </Setter>
         </Style>
     </Window.Resources>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="Black"/>
+            <GradientStop Color="#FF00332D" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="29*"/>
             <ColumnDefinition Width="305*"/>
@@ -54,11 +54,36 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="1" Width="Auto" Height="Auto" Margin="0,180,14,50" Grid.ColumnSpan="2" Click="Button_Click">Отчет</Button>
-        <ComboBox x:Name="ReportsCBX" Width="200" Height="30" Margin="38,30,67,225" Grid.Column="1" Grid.RowSpan="2">
-            <ComboBoxItem Content="Получить полный перечень и общее число препаратов требующихся для заказов, находящихся в производстве. "/>
-            <ComboBoxItem Content="Получить все технологии приготовления лекарств указанных типов, конкретных лекарств, лекарств, находящихся в справочнике заказов в производстве."/>
-        </ComboBox>
-        
+        <Button Grid.Row="1" Width="200" Height="50" Margin="0,200,14,50" Grid.ColumnSpan="2" Click="Button_Click">Отчет</Button>
+        <ListBox x:Name="ReportsCBX" Grid.Row="1" Margin="10,10,44,192" Foreground="#FF00F17D" FontSize="14" Grid.Column="1">
+            <ListBox.Style>
+                <Style TargetType="ListBox">
+                    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+                    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+                </Style>
+            </ListBox.Style>
+            <ListBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF0D1F1C" Offset="1"/>
+                </LinearGradientBrush>
+            </ListBox.Background>
+            <ListBoxItem Content="Получить полный перечень и общее число препаратов требующихся для заказов, находящихся в производстве."/>
+            <ListBoxItem Content="Получить все технологии приготовления лекарств указанных типов, конкретных лекарств, лекарств, находящихся в справочнике заказов в производстве."/>
+            <ListBoxItem Content="Получить сведения о ценах на указанное лекарство в готовом виде, об объеме и ценах на все компоненты, требующиеся для этого лекарства."/>
+            <ListBoxItem Content="Получить сведения о наиболее часто делающих заказы клиентах на медикаменты определенного типа, на конкретные медикаменты. "/>
+            <ListBoxItem Content="Получить сведения о покупателях, которые не пришли забрать свой заказ в назначенное им время и общее их число."/>
+            <ListBoxItem Content="Получить перечень и общее число покупателей, которые ждут прибытия на склад нужных им медикаментов в целом и по указанной категории медикаментов." />
+            <ListBoxItem Content="Получить перечень десяти наиболее часто используемых медикаментов в целом и указанной категории медикаментов." />
+            <ListBoxItem Content="Получить какой объем указанных веществ использован за указанный период." />
+            <ListBoxItem Content="Получить перечень и общее число покупателей, заказывавших определенное лекарство или определенные типы лекарств за данный период." />
+            <ListBoxItem Content="Получить перечень и типы лекарств, достигших своей критической нормы или закончившихся. ." />
+            <ListBoxItem Content="Получить перечень лекарств с минимальным запасом на складе в целом и по указанной категории медикаментов." />
+            <ListBoxItem Content="Получить полный перечень и общее число заказов находящихся в производстве." />
+
+
+
+        </ListBox>
+
     </Grid>
 </Window>

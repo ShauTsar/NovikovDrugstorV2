@@ -101,5 +101,17 @@ namespace NovikovDrugstorV2
             TableWindows.ClassesTable classesTable = new TableWindows.ClassesTable("TechnicalManual");
             classesTable.Show();
         }
+
+        private void btnTbComponentToCreate_Click(object sender, RoutedEventArgs e)
+        {
+            TableWindows.ClassesTable classesTable = new TableWindows.ClassesTable("ComponentToCreate");
+            classesTable.Show();
+        }
+
+        private void btnTbComponents_Click(object sender, RoutedEventArgs e)
+        {
+            TableWindows.ClassesTable classesTable = new TableWindows.ClassesTable("Components");
+            classesTable.Show();
+        }
     }
 }

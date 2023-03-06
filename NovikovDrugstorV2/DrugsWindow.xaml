@@ -55,15 +55,14 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Type of Medicine:" Grid.Row="0" Grid.Column="0"/>
-        <ComboBox x:Name="cmbMedicineType" Grid.Row="0" Grid.Column="1" Margin="5" SelectedValuePath="Content">
+        <Label x:Name="Lb1" Content="Вид лекарства:" Grid.Row="0" Grid.Column="0" Visibility="Hidden"/>
+        <ComboBox x:Name="cmbMedicineType" Grid.Row="0" Grid.Column="1" Margin="5" SelectedValuePath="Content" Visibility="Hidden">
         </ComboBox>
-        <Label Content="Name of Medicine:" Grid.Row="1" Grid.Column="0" Margin="0,5,0,0"/>
-        <ComboBox x:Name="cmbMedicineName" Grid.Row="1" Grid.Column="1" Margin="5"/>
-        <Button Content="Search" Grid.Row="2" Grid.Column="1" Margin="5"
+        <Label x:Name="Lb2" Content="Лекарство:" Grid.Row="1" Grid.Column="0" Margin="0,5,0,0" Visibility="Hidden"/>
+        <ComboBox x:Name="cmbMedicineName" Grid.Row="1" Grid.Column="1" Margin="5" Visibility="Hidden"/>
+        <Button Content="Найти" Grid.Row="2" Grid.Column="1" Margin="5"
                 Click="BtnSearch_Click"/>
-        <Label Grid.Row="3" Content="Вывести лекарства в производстве"/>
-        <CheckBox Grid.Row="3" x:Name="chBxAllMedicine" Grid.Column="2" Margin="20,7,0,0"/>
-
+        <DatePicker x:Name="dateFromDp" Grid.Row="3" Visibility="Hidden" Text="Dadadadad"/>
+        <DatePicker x:Name="dateToDp" Grid.Column="1" Margin="26,28,107,0" Grid.RowSpan="2" Grid.Row="2"  Visibility="Hidden"/>
     </Grid>
 </Window>

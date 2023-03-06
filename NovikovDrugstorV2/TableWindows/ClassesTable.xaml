@@ -37,8 +37,8 @@
 
     <Grid>
         <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="True" x:Name="DataGrid" CellEditEnding="DataGrid_CellEditEnding" BeginningEdit="DataGrid_BeginningEdit" />
-        <Button x:Name="AddButton" Content="Add" Width="80" Height="30" Margin="10,10,250,30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="#007ACC" Foreground="White" FontSize="14" Click="AddButton_Click" FontFamily="Segoe Print"/>
-        <Button x:Name="DeleteButton" Content="Delete" Width="80" Height="30" Margin="100,10,150,30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="#007ACC" Foreground="White" FontSize="14" Click="DeleteButton_Click " FontFamily="Segoe Print"/>
-        <Button x:Name="RefreshButton" Content="Refresh" Width="80" Height="30" Margin="100,10,50,30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="#007ACC" Foreground="White" FontSize="14" FontFamily="Segoe Print" Click="RefreshButton_Click"/>
+        <Button x:Name="AddButton" Content="Добавить" Width="80" Height="30" Margin="10,10,250,30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="#007ACC" Foreground="White" FontSize="14" Click="AddButton_Click" FontFamily="Segoe Print"/>
+        <Button x:Name="DeleteButton" Content="Удалить" Width="80" Height="30" Margin="100,10,150,30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="#007ACC" Foreground="White" FontSize="14" Click="DeleteButton_Click " FontFamily="Segoe Print"/>
+        <Button x:Name="RefreshButton" Content="Обновить" Width="80" Height="30" Margin="100,10,50,30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="#007ACC" Foreground="White" FontSize="14" FontFamily="Segoe Print" Click="RefreshButton_Click"/>
     </Grid>
 </Window>
